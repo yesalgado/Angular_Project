@@ -1,1 +1,87 @@
 https://github.com/yesalgado/Angular_Project/blob/f1d831ea46fb3c25d0095c102a4c73c6e2b25fc9/Filtros_Yesner.rar
+
+
+Mejoras aplicadas al filtro personalizado, permite realizar una busqueda por nombre(cabe señalar que se puede cambiar el filtro de acuerdo a las necesidades del usuario.
+
+------Codigo Pipe --------
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'filter'
+})
+export class FilterPipe implements PipeTransform {
+
+  transform(value: any, arg: any): any {
+    const resultfriends = [];
+    for(const friend of value){
+      if(friend.name.indexOf(arg) > -1){
+         resultfriends.push(friend);
+      };
+    };
+    return resultfriends;
+  }
+
+}
+
+
+------Codigo en module.ts------
+
+import { FormsModule } from '@angular/forms';
+
+import {FilterPipe} from './filtros/filter.pipe';
+
+
+
+@NgModule({
+  declarations: [
+    FilterPipe  
+    
+  ],
+  imports: [
+    FormsModule
+    
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+
+--------Codigo en filtros.component.ts------
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+filterpost = '';
+
+friends = [
+  	 {name: 'Jonny',   phone: '225-1212',  age: 10},
+     {name: 'Maria',   phone: '225-9876',  age: 19},
+     {name: 'Michel',   phone: '225-4321',  age: 21},
+     {name: 'Adam',   phone: '225-5678',  age: 35},
+     {name: 'Julio',  phone: '225-8765',  age: 29} ];
+     
+     
+     
+----------Codigo HTML ----------------------
+
+ <input type="text" class="forms-control" placeholder="Buscar.." [(ngModel)]="filterpost"
+      name="filterpost" />
+
+ <table class="friends">
+    <tr>
+      <th>Nombre </th>
+      <th>Numero de telefono </th>
+      <th>Edad </th>
+  </tr>
+
+
+  <tr *ngFor= "let  friend of friends | filter: filterpost">
+      <td>{{friend.name }}</td>
+        <td>{{friend.phone }}</td>
+          <td>{{friend.age }}</td>
+      
+
+  </tr>
+  </table>
