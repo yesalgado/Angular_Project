@@ -1,4 +1,5 @@
 https://github.com/yesalgado/Angular_Project/blob/f1d831ea46fb3c25d0095c102a4c73c6e2b25fc9/Filtros_Yesner.rar
+https://github.com/yesalgado/Angular_Project/blob/5a54eb05a454933488829bd73f0e72c4e7c4b5e2/Video_2021-08-30_144642.wmv
 
 
 Mejoras aplicadas al filtro personalizado, permite realizar una busqueda por nombre(cabe señalar que se puede cambiar el filtro de acuerdo a las necesidades del usuario.
